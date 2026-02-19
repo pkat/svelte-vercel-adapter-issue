@@ -1,0 +1,15 @@
+node_modules/
+.pnpm-store/
+.turbo/
+.vercel/
+.svelte-kit/
+dist/
+build/
+*.tsbuildinfo
+.DS_Store
+*.log
+*.env
+*.env.*
+!*.env.sample
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

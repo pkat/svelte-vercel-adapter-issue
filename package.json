@@ -1,0 +1,25 @@
+{
+  "name": "sveltekit-vercel-nft-repro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "build:app-simple": "turbo run build --filter app-simple",
+    "build:app-with-flags": "turbo run build --filter app-with-flags",
+    "dev": "turbo run dev --parallel",
+    "dev:app-simple": "turbo run dev --filter app-simple",
+    "dev:app-with-flags": "turbo run dev --filter app-with-flags",
+    "check": "turbo run check"
+  },
+  "dependencies": {
+    "turbo": "^2.5.0"
+  },
+  "packageManager": "pnpm@10.8.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@vercel/nft": "^1.0.0"
+  }
+}

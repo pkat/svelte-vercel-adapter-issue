@@ -1,0 +1,31 @@
+{
+  "name": "@repro/server-libs",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./logger": "./src/logger.ts",
+    "./graphql-client": "./src/graphql-client.ts"
+  },
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "clean-stack": "^6.0.0",
+    "currency.js": "^2.0.4",
+    "fetch-retry": "^6.0.0",
+    "graphql-request": "^6.1.0",
+    "node-fetch": "^2.7.0",
+    "phone": "^3.1.68",
+    "pino": "^9.6.0",
+    "serialize-error": "^12.0.0",
+    "storyblok-js-client": "^6.11.0",
+    "strip-ansi": "^7.1.2"
+  },
+  "devDependencies": {
+    "@repro/tsconfig": "workspace:*",
+    "@types/node-fetch": "^2.6.13",
+    "pino-pretty": "^13.0.0",
+    "typescript": "catalog:"
+  }
+}

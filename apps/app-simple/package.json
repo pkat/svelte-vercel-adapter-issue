@@ -1,0 +1,36 @@
+{
+  "name": "app-simple",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "svelte-kit sync",
+    "dev": "vite dev --port 5174",
+    "build": "vite build",
+    "preview": "vite preview --port 5174",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "@repro/client-utils": "workspace:*",
+    "@repro/server-libs": "workspace:*",
+    "@vercel/edge-config": "catalog:",
+    "@vercel/functions": "catalog:",
+    "@vercel/otel": "catalog:",
+    "sveltekit-superforms": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@opentelemetry/api": "^1.9.0",
+    "@repro/tsconfig": "workspace:*",
+    "@sveltejs/adapter-vercel": "catalog:",
+    "@sveltejs/kit": "catalog:",
+    "@sveltejs/vite-plugin-svelte": "catalog:",
+    "svelte": "catalog:",
+    "svelte-check": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
