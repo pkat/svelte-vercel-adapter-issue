@@ -37,16 +37,27 @@ function findFuncDirs(dir) {
   return results;
 }
 
-// Recursively get all files with sizes
+// Recursively get all files with sizes (handles special files like /proc/self)
 function walkFiles(dir, base = dir) {
   const results = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch {
+    results.push({ path: path.relative(base, dir), size: 0, error: true });
+    return results;
+  }
+  for (const entry of entries) {
     const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      results.push(...walkFiles(full, base));
-    } else {
-      const stat = fs.statSync(full);
-      results.push({ path: path.relative(base, full), size: stat.size });
+    try {
+      if (entry.isDirectory()) {
+        results.push(...walkFiles(full, base));
+      } else {
+        const stat = fs.statSync(full);
+        results.push({ path: path.relative(base, full), size: stat.size });
+      }
+    } catch {
+      results.push({ path: path.relative(base, full), size: 0, error: true });
     }
   }
   return results;
@@ -104,7 +115,7 @@ for (const funcDir of funcDirs) {
   }
 
   // Flag suspicious system directories
-  const systemDirPatterns = ['uv', 'node22', 'node20', 'node18', '.vercel', 'usr', 'opt', 'tmp'];
+  const systemDirPatterns = ['uv', 'node22', 'node20', 'node18', 'node24', '.vercel', 'usr', 'opt', 'tmp', 'proc', 'pnpm10', '.local', '.cache', 'nix'];
   const suspiciousDirs = sorted.filter(([dir]) =>
     systemDirPatterns.some(p => dir.toLowerCase().startsWith(p))
   );
